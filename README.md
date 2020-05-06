@@ -80,7 +80,9 @@ ImagePaste::make('image')
 - [osama][link-author]
 
 
-## Issue
+## Issues
   if you found any issues please on an issue.
+  
+
 
 [link-author]: https://github.com/osamaAbdullah
