@@ -1,6 +1,6 @@
 {
     "name": "osama/image-paste",
-    "description": "A Laravel Nova Image field.",
+    "description": "A Laravel Nova Image field. you can paste or drag or chose an image",
     "keywords": [
         "laravel",
         "nova"
