@@ -83,6 +83,11 @@ ImagePaste::make('image')
 ## Issues
   if you found any issues please on an issue.
   
+## Screenshots
+   
+Create | Detail | Update | Index
+------------ | ------------- | ------------- | -------------
+ ![nova-responsive-detail-view](screenshots/creation.png) | ![nova-responsive-create-view](screenshots/detail.png)|  ![nova-responsive-delete-view](screenshots/update.png)|  ![nova-responsive-delete-view](screenshots/index.png)
 
 
 [link-author]: https://github.com/osamaAbdullah
