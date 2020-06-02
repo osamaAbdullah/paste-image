@@ -81,7 +81,7 @@ ImagePaste::make('image')
 
 
 ## Issues
-  if you found any issues please on an issue.
+  if you found any issues please open an issue.
   
 ## Screenshots
    
