@@ -17,4 +17,13 @@ class ImagePaste extends Image
 		return $this->withMeta(['url' => $url]);
 	}
 	
+	
+	public function sizeForIndex($height, $width)
+	{
+		return $this->withMeta([
+			'height' => $height,
+			'width' => $width,
+		]);
+	}
+	
 }

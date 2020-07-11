@@ -2,9 +2,9 @@
     <div v-if="field.url" class="main-container">
         <img :src="field.url"
              @click="showBigImage = true"
-             style="object-fit: cover"
-             width="50"
-             height="50"
+             :style="`object-fit: cover; height: ${field.height}px; min-width: ${field.width}px; width: ${field.width}px`"
+             :height="field.height"
+             :width="field.width"
              class="rounded-full image"/>
         <div class="image-hover-container"
              ref="bigImageContainer"

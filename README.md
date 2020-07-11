@@ -15,6 +15,7 @@ Originally package was developed on PHP 7.3.11 and Laravel 7.8, but should work 
 - pass custom url only one time for (form, index, view) pages __->url()__ (new to v2.0)
 - clickable small image in index view with full-size image in modal (new to v2.0)
 - passing __[->acceptedTypes()][link-acceptedTypes]__ like native file field in nova (new to v2.0)
+- passing __->sizeForIndex($height, $width)__ customizing image size in index page (new to v2.0)
 
 
 ## Installation
@@ -75,6 +76,7 @@ ImagePaste::make('image')
 //      return url('/orders/' . $this->id . '/image');
 //    })
     ->acceptedTypes('image/*')
+    ->sizeForIndex(50, 50) // (height, width) measured with pixels
     ->url('/orders/' . $this->id . '/image') // you can pass custom url to perview image
     ->hideFromIndex()
     ->rules('nullable', 'image', 'max:2000'),
