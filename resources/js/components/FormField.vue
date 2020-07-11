@@ -9,7 +9,7 @@
                         @mouseenter="hovered = true" @mouseleave="hovered = false"
                         @focus="focused = true" @blur="focused = false" tabindex="0"
                         type="file"
-                        accept="image/*"
+                        :accept="field.acceptedTypes"
                         class="form-file-input z-10"
                         ref="fileField"
                         :name="field.name"
@@ -59,7 +59,7 @@
                     v-if="hasValueButImageMissing"
                     class="not-found mt-3 text-sm">
                     <span>
-                        <a :href="field.thumbnailUrl" class="text-primary dim" target="_blank">
+                        <a :href="field.url" class="text-primary dim" target="_blank">
                             {{__('This field')}}
                         </a> {{__('has an image, but it could not be found. Try uploading a new one.')}}
                     </span>
@@ -123,7 +123,7 @@ export default {
             formData.append(this.field.attribute, this.file, this.fileName)
         }
 
-        if (this.field.thumbnailUrl) {
+        if (this.field.url) {
             this.fetchImage();
         } else {
             this.missing = true;
@@ -153,16 +153,14 @@ export default {
 
         fetchImage() {
             Minimum(
-                axios.get(`/images/${this.field.value}/get-preview-image`, {
+                axios.get(this.field.url, {
                     responseType: 'blob',
                 })
             )
                 .then(({ headers, data }) => {
 
                     const blob = new Blob([data], { type: headers['content-type'] })
-                    let newImage = new Image()
-                    let fileName = this.field.value.match(/[^\\/]*$/)[0]
-                    this.fileName = fileName
+                    this.fileName = this.field.value.match(/[^\\/]*$/)[0]
                     this.imagePreview = window.URL.createObjectURL(blob)
                     this.loading = false
                 })
@@ -302,7 +300,7 @@ export default {
 
         hasImage() {
             return (
-                Boolean(this.field.value || this.field.thumbnailUrl || this.imagePreview) &&
+                Boolean(this.field.value || this.field.url || this.imagePreview) &&
                 !Boolean(this.deleted) &&
                 !Boolean(this.missing)
             )
@@ -317,7 +315,7 @@ export default {
         },
 
         shouldShowLoader() {
-            return !Boolean(this.deleted) && Boolean(this.field.thumbnailUrl)
+            return !Boolean(this.deleted) && Boolean(this.field.url)
         },
 
         shouldShowRemoveButton() {

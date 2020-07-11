@@ -8,4 +8,13 @@ class ImagePaste extends Image
 {
    
     public $component = 'paste-image';
+    
+	public function url($url)
+	{
+		$this->preview(function () use ($url) {
+			return $url;
+		});
+		return $this->withMeta(['url' => $url]);
+	}
+	
 }
